@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'PROJECT';
+  Page = 'recipe';
+
+  onNavigate(feature: string){
+    this.Page = feature;
+  }
+
+
 }
