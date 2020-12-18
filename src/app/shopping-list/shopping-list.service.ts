@@ -21,4 +21,13 @@ export class ShoppingListService {
     this.ingredients.push(ingredient);
     this.ingredientAdded.emit(this.ingredients.slice())
   }
+
+  addIngToBag(ingredients : Ingredient[]){
+    for ( let ing of ingredients){
+      this.ingredients.push(ing);
+      this.ingredientAdded.emit(this.ingredients.slice())
+    }
+
+  }
+
 }
