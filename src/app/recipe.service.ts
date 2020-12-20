@@ -20,8 +20,4 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  getSelectedRecipe(id: number){
-    return this.recipes[id]
-  }
-
 }
