@@ -26,4 +26,11 @@ private recipeService : RecipeService) { }
   addToBag(){
     this.slService.addIngToBag(this.recipe.ingredients);
   }
+
+  onDeleteRecipe(){
+    console.log('ss')
+    const id = +this.route.snapshot.params['id'];
+    this.recipeService.deleteRecipe(id);
+    this.router.navigate(['/recipes']);
+  }
 }

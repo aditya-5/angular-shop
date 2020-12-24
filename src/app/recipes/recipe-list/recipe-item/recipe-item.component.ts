@@ -13,14 +13,18 @@ export class RecipeItemComponent implements OnInit {
   recipes: Recipe[];
 
   constructor(private recipeService : RecipeService){
-    
+
   }
 
   ngOnInit() {
 
     this.recipes = this.recipeService.getRecipes();
     this.index = this.recipes.indexOf(this.recipe);
-    console.log(this.index);
+    this.recipeService.recipesChanged.subscribe(
+      (neww: Recipe[]) => {
+           this.recipes = neww ;
+           this.index = this.recipes.indexOf(this.recipe);
+       });
   }
 
 
