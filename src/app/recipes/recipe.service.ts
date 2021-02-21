@@ -2,7 +2,6 @@ import {Recipe} from "./recipe.model";
 import {Ingredient} from "../shared/ingredient.model"
 import {Subject} from "rxjs";
 
-
 export class RecipeService {
 
   recipesChanged = new Subject<Recipe[]>();
@@ -45,4 +44,10 @@ export class RecipeService {
     this.recipes.splice(index, 1);
     this.emitUpdatedRecipes();
   }
+
+  fetchRec(a: Recipe[]){
+    this.recipes = a;
+    this.emitUpdatedRecipes();
+  }
+
 }
