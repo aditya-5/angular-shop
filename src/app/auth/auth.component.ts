@@ -2,6 +2,7 @@ import {Component } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import { AuthService} from "./auth.service";
 import {LoadingSpinnerComponent} from "../shared/loading-spinner.component"
+import { Router} from "@angular/router"
 
 @Component({
   selector: "app-auth",
@@ -12,7 +13,7 @@ export class AuthComponent{
   isLoading = false;
   err:string = null;
 
-  constructor(private authService : AuthService){
+  constructor(private authService : AuthService, private router:Router){
 
   }
 
@@ -32,6 +33,7 @@ export class AuthComponent{
       this.authService.signup(email, password).subscribe((resData)=>{
         console.log(resData);
         this.isLoading = false;
+        this.router.navigate(["/recipes"]);
       }, errorMessage=>{
         console.log(errorMessage);
         this.err = errorMessage;
@@ -44,8 +46,9 @@ export class AuthComponent{
       const email = form.value.email;
       const password = form.value.password;
       this.authService.signin(email, password).subscribe(resData=>{
-        console.log(resData);
         this.isLoading = false;
+        console.log('sd')
+        this.router.navigate(["/recipes"]);
       }, errorMessage=>{
         console.log(errorMessage);
         this.err = errorMessage;
